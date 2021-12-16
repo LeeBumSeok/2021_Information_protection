@@ -97,20 +97,23 @@ python 3.8.9 (default, Aug  3 2021, 19:21:54) [Clang 13.0.0 (clang-1300.0.29.3)]
 
      ```python
      self.get_header_info()
-       # header의 size가 지나치게 많거나 version이 잘 못 되는 등의 상황은 의심스러움
+       # header의 size가 지나치게 많거나 version이 잘못되는 등의 상황은 의심스러움
 
      self.get_exports_info()
        # 악성코드의 경우 export를 많이 할것으로 예상됨
-       # _feature 해시로 추출_
+       # _feature 해시로 추출
 
      self.get_imports_info()
        # import하는 라이브러리와 imports들의 내용이 의심스러움
-       # _feature 해시로 추출_
+       # _feature 해시로 추출
      ```
 
    - PESTUDIO에서 추출한 특징들
 
      ```python
+     self.get_image_info()
+       # 이미지의 엔트로피 값 추출
+
      self.get_libraries_info()
        # 라이브러리의 블랙리스트 비율을 체크
 
@@ -132,14 +135,14 @@ python 3.8.9 (default, Aug  3 2021, 19:21:54) [Clang 13.0.0 (clang-1300.0.29.3)]
 
        | 모델                | 정확도     |
        | ------------------- | ---------- |
-       | **Random Forest**   | **0.9469** |
-       | Decision Tree       | 0.9126     |
-       | **Light GBM**       | **0.953**  |
-       | SVM                 | 0.8299     |
-       | Logistic Regression | 0.8411     |
-       | KNeighbors          | 0.9027     |
-       | AdaBoost            | 0.8946     |
-       | MLP                 | 0.84       |
+       | **Random Forest**   | **0.9573** |
+       | Decision Tree       | 0.9339     |
+       | **Light GBM**       | **0.9582** |
+       | SVM                 | 0.8269     |
+       | Logistic Regression | 0.8413     |
+       | KNeighbors          | 0.9028     |
+       | AdaBoost            | 0.9055     |
+       | MLP                 | 0.4605     |
 
    - 주의 사항
 
@@ -151,8 +154,8 @@ python 3.8.9 (default, Aug  3 2021, 19:21:54) [Clang 13.0.0 (clang-1300.0.29.3)]
    - 8개의 모델중 최적의 모델 선택
      - 정확도가 가장 높았던 `Random Forest`, `Light GBM` 두 개의 모델을 선택하여 앙상블
      - 학습 결과
-       - 0.9546의 정확도 검출
-       - 기존 튜토리얼 코드의 정확도 0.9433, 0.9501에서 유의미한 향상폭 검출
+       - 0.9615의 정확도 검출
+       - 기존 튜토리얼 코드의 정확도 0.94573, 0.9501에서 유의미한 향상폭 검출
    - Soft Voting을 선택한 이유
      - 다수의 classifier의 결과값을 평균하여 class를 결정하기에 hard voting보다 성능이 우수하다고 판단
 
@@ -166,11 +169,11 @@ python 3.8.9 (default, Aug  3 2021, 19:21:54) [Clang 13.0.0 (clang-1300.0.29.3)]
 
    - 학습 결과
 
-     - 특징 추출 전 특징의 개수 : 1986
+     - 특징 추출 전 특징의 개수 : 1605
 
-     - 특징 추출 후 특징의 개수 : 993
+     - 특징 추출 후 특징의 개수 : 802
 
-     - 정확도: 0.5919
+     - 정확도: 0.2904
 
        > 정확도가 낮아진 이유
        >
