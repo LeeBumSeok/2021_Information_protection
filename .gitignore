@@ -1,4 +1,6 @@
 # Data File
 /데이터
 데이터/
-/.DS_Store
+
+# DS_Store
+*.DS_Store
